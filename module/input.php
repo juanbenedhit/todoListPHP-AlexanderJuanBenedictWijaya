@@ -20,10 +20,10 @@ if ($dateTime && $dateTime->format('Y-m-d') === $date) {
     }
 
     $_SESSION['users'][] = $user;
-    $_SESSION['message'] = "Pendaftaran Berhasil";
+    $_SESSION['message'] = "Task Berhasil Ditambahkan";
     $_SESSION['type'] = "success";
 } else  {
-    $_SESSION['message'] = "Pendaftaran gagal, tanggal tidak valid";
+    $_SESSION['message'] = "Task gagal Ditambahkan, tanggal tidak valid";
     $_SESSION['type'] = "danger";
 }
 

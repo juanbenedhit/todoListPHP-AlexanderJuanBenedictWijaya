@@ -17,7 +17,7 @@
 </header>
 
 <div class="container text-center mt-5">
-    <h3 class="fw-bold">Tambah yang harus dilakukan</h3>
+    <h3 class="fw-bold">Tambahkan yang harus dilakukan</h3>
 </div>
     <div class="container mt-4">
     <!-- alert php -->
@@ -62,91 +62,93 @@
     </div>
     
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@ LIST YANG SUDAH MASUK  @@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<div class="container mt-5" id ="list">
+<!-- <div class="container mt-5" id ="list">
     <div class="card">
         <div class="card-header bg-warning ">
             <h4 class="m-0 fw-bold">
             Yang harus dilakukan
             </h4>
         </div>
-        <div class="card-body ">
+        <div class="card-body "> -->
             <?php
                 if (isset($_SESSION['users']) && !empty($_SESSION['users'])) { 
-                    foreach ($_SESSION['users'] as $user) {
-                        echo '<div class="outer shadow p-3 mb-4 bg-body-tertiary rounded">';
-                            echo '<div class="inner d-flex justify-content-between">'; 
-                                echo '<div class="d-column" style="width: 75%;">'; 
-                                    echo '<h4>' . $user['listToDo'] . '</h4>';
-                                    echo '<p class="mb-2">' . $user['date'] . '</p>';
-                                    switch ($user['priority']) {
-                                        case 'low':
-                                            echo '<span class="badge bg-primary m-0">' . $user['priority'] . '</span>';
-                                            break;
-                                        case 'mid':
-                                            echo '<span class="badge bg-warning">' . $user['priority'] . '</span>';
-                                            break;
-                                        case 'high':
-                                            echo '<span class="badge bg-danger">' . $user['priority'] . '</span>';
-                                            break;
-                                    } 
-                                echo '</div>'; 
-                            
-                                echo '<div class="button-container d-flex align-items-center">'; 
-                                    echo ' <a href="module/edit.php?id=' . array_search($user, $_SESSION['users']) . '"
-                                    <button class="custom-btn-edit"></button> </a>';
-                                            
-                                    echo ' <a href="module/clear.php?id=' . array_search($user, $_SESSION['users']) . '"
-                                    <button class="custom-btn-check"></button> </a>';
-                                echo '</div>'; 
-                            echo '</div>'; 
-                        echo '</div>'; 
-                    }
+                    echo '<div class="container mt-5" id ="list">';
+                        echo '<div class="card">';
+                            echo '<div class="card-header bg-warning ">';
+                                echo '<h4 class="m-0 fw-bold">Yang harus dilakukan</h4>';
+                            echo '</div>';
+                            echo '<div class="card-body ">    ';       
+                                foreach ($_SESSION['users'] as $id => $user) {
+                                    echo '<div class="outer shadow p-3 mb-4 bg-body-tertiary rounded">';
+                                        echo '<div class="inner d-flex justify-content-between">'; 
+                                            echo '<div class="d-column" style="width: 75%;">'; 
+                                                echo '<h4>' . $user['listToDo'] . '</h4>';
+                                                echo '<p class="mb-2">' . $user['date'] . '</p>';
+                                                switch ($user['priority']) {
+                                                    case 'low':
+                                                        echo '<span class="badge bg-primary m-0">' . $user['priority'] . '</span>';
+                                                        break;
+                                                    case 'mid':
+                                                        echo '<span class="badge bg-warning">' . $user['priority'] . '</span>';
+                                                        break;
+                                                    case 'high':
+                                                        echo '<span class="badge bg-danger">' . $user['priority'] . '</span>';
+                                                        break;
+                                                } 
+                                            echo '</div>'; 
+                                            echo '<div class="button-container d-flex align-items-center">'; 
+                                                echo '<a href="module/edit.php?id=' . $id . '"><button class="custom-btn-edit"></button></a>';
+                                                echo '<a href="module/complete.php?id=' . $id . '"><button class="custom-btn-check"></button></a>';
+                                            echo '</div>'; 
+                                        echo '</div>'; 
+                                    echo '</div>'; 
+                                }
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';  
                 }
             ?>
-        </div>
-    </div>
-</div>
 
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@ LIST YANG SUDAH SELESAI  @@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 
-<div class="container mt-5" id="clear">
-    <div class="card">
-        <div class="card-header bg-success">
-            <h4 class="m-0 fw-bold text-white">Yang sudah dilakukan</h4>
-        </div>
-        <div class="card-body">
         <?php
                 if (isset($_SESSION['completed']) && !empty($_SESSION['completed'])) {
-                    foreach ($_SESSION['completed'] as $id => $completed) {
-                        echo '<div class="outer shadow p-3 mb-4 bg-body-tertiary rounded">';
-                            echo '<div class="d-flex justify-content-between">';
-                                echo '<div class="d-column" style="width: 75%;">';
-                                    echo '<h4>' . $completed['listToDo'] . '</h4>';
-                                    echo '<p class="mb-2">' . $completed['date'] . '</p>';
-                                    switch ($completed['priority']) {
-                                        case 'low':
-                                            echo '<span class="badge bg-primary m-0">' . $completed['priority'] . '</span>';
-                                            break;
-                                        case 'mid':
-                                            echo '<span class="badge bg-warning">' . $completed['priority'] . '</span>';
-                                            break;
-                                        case 'high':
-                                            echo '<span class="badge bg-danger">' . $completed['priority'] . '</span>';
-                                            break;
-                                    }
-                                echo '</div>';
-                                echo '<div class="button-container d-flex align-items-center">'; 
-                                    echo '<a href="module/delete.php?id=' . $id . '"><button class="custom-btn-delete"></button></a>';
-                                echo '</div>';
+
+                    echo '<div class="container mt-5" id="complete">';
+                        echo '<div class="card">';
+                            echo'<div class="card-header bg-success">';
+                                echo '<h4 class="m-0 fw-bold text-white">Yang sudah dilakukan</h4>';
+                            echo '</div>';
+                            echo '<div class="card-body">';
+                                foreach ($_SESSION['completed'] as $id => $completed) {  
+                                    echo '<div class="outer shadow p-3 mb-4 bg-body-tertiary rounded">';
+                                        echo '<div class="d-flex justify-content-between">';
+                                            echo '<div class="d-column" style="width: 75%;">';
+                                                echo '<h4>' . $completed['listToDo'] . '</h4>';
+                                                echo '<p class="mb-2">' . $completed['date'] . '</p>';
+                                                switch ($completed['priority']) {
+                                                    case 'low':
+                                                        echo '<span class="badge bg-primary m-0">' . $completed['priority'] . '</span>';
+                                                        break;
+                                                    case 'mid':
+                                                        echo '<span class="badge bg-warning">' . $completed['priority'] . '</span>';
+                                                        break;
+                                                    case 'high':
+                                                        echo '<span class="badge bg-danger">' . $completed['priority'] . '</span>';
+                                                        break;
+                                                }
+                                            echo '</div>';
+                                            echo '<div class="button-container d-flex align-items-center">'; 
+                                                echo '<a href="module/delete.php?id=' . $id . '"><button class="custom-btn-delete"></button></a>';
+                                            echo '</div>';
+                                        echo '</div>';
+                                    echo '</div>';
+                                }
                             echo '</div>';
                         echo '</div>';
-                    }
+                    echo '</div>';       
                 }
             ?>
-        </div>
-    </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

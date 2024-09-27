@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'priority' => $_POST['priority']
     ];
 
-    $_SESSION['message'] = 'To-do updated successfully!';
+    $_SESSION['message'] = 'Task Berhasil di Edit!';
     $_SESSION['type'] = 'success';
     header('Location: ../index.php');
     exit();
@@ -31,22 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit To-Do</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body>
+<div class="container text-center mt-5">
+    <h3 class="fw-bold">Edit Hal Yang Harus Dilakukan</h3>
+</div>
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
                 <form method="POST">
                     <div class="mb-3">
-                        <label for="listToDo" class="form-label">Edit the task</label>
+                        <label for="listToDo" class="form-label">Edit Task</label>
                         <input type="text" class="form-control" name="listToDo" value="<?= $todo['listToDo'] ?>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="date" class="form-label">Edit due date</label>
+                        <label for="date" class="form-label">Edit Tanggal Harus Selesai</label>
                         <input type="date" class="form-control" name="date" value="<?= $todo['date'] ?>" required>
                     </div>
                     <div class="mb-3">
-                        <label for="priority" class="form-label">Priority</label>
+                        <label for="priority" class="form-label">Edit Priority</label>
                         <select name="priority" id="priority" class="form-select">
                             <option value="low" <?= $todo['priority'] == 'low' ? 'selected' : '' ?>>low</option>
                             <option value="mid" <?= $todo['priority'] == 'mid' ? 'selected' : '' ?>>mid</option>

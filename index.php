@@ -62,14 +62,6 @@
     </div>
     
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@ LIST YANG SUDAH MASUK  @@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-<!-- <div class="container mt-5" id ="list">
-    <div class="card">
-        <div class="card-header bg-warning ">
-            <h4 class="m-0 fw-bold">
-            Yang harus dilakukan
-            </h4>
-        </div>
-        <div class="card-body "> -->
             <?php
                 if (isset($_SESSION['users']) && !empty($_SESSION['users'])) { 
                     echo '<div class="container mt-5" id ="list">';
@@ -110,10 +102,8 @@
             ?>
 
 <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@ LIST YANG SUDAH SELESAI  @@@@@@@@@@@@@@@@@@@@@@@@@@ -->
-
         <?php
                 if (isset($_SESSION['completed']) && !empty($_SESSION['completed'])) {
-
                     echo '<div class="container mt-5" id="complete">';
                         echo '<div class="card">';
                             echo'<div class="card-header bg-success">';
